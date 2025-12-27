@@ -1,6 +1,7 @@
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from app_store.logic.control_cart import view_in_cart
+from app_store.logic.control_wishlist import view_in_wishlist
 
 
 def login_view(request):
@@ -12,7 +13,8 @@ def login_view(request):
         user = authenticate(username=data["username"], password=data["password"])  # Понимаем, что за пользователь перед нами
         if user:  # Если пользователь есть в базе
             login(request, user)  # Авторизируем пользователя
-            view_in_cart(user.username)  # Получаем корзину пользователя, если её нет, то создаем её
+            view_in_cart(user.username)
+            view_in_wishlist(user.username) # Получаем корзину пользователя, если её нет, то создаем её
             return redirect("/")  # Перенаправляем пользователя на стартовую страницу
         # Иначе заново показываем форму авторизации
         return render(request, "login/login.html", context={"error": "Неверные данные"})
@@ -21,3 +23,5 @@ def logout_view(request):
     if request.method == "GET":
         logout(request)  # Функция разлогинивает пользователя
         return redirect("/")  # TODO Верните редирект на стартовую страницу
+
+

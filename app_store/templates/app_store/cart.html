@@ -49,7 +49,7 @@
 						        
 						        <td class="quantity">
 						        	<div class="input-group mb-3">
-					             	<input type="number" name="quantity" class="quantity form-control input-number" value={{product.quantity}} min="1" max="100">
+					             	<input type="number" name="quantity" class="quantity form-control input-number" value="{{ product.quantity }}" min="1" max="100">
 					          	</div>
 					          </td>
 						        
@@ -136,5 +136,3 @@
 	<!-- Функция расчета стоимости доставки при отправке запроса на адрес /delivery/estimate с параметрами country, city, code-->
 	<script src="{% static 'app_store/js/appEstimateDelivery.js' %}"></script>
 {% endblock %}
-  </body>
-</html>
