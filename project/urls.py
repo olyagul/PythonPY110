@@ -61,4 +61,5 @@ urlpatterns = [
     # path('product/', product_view_json),
     # path('', shop_view),
     path('', include('app_store.urls')),
+    path('login/', include('app_login.urls')),
 ]
